@@ -1,7 +1,5 @@
 ## Introduction
-An etch-and-sketch project using HTML, CSS and Javascript. 
+An etch-a-sketch project using HTML, CSS and Javascript. 
 
-## To Do: 
--figure out rainbow color generator function (currently defaults to 'purple')
--preventing string user input once program is reset
--design UI 
+## To Do
+Embed color picker input onto color button, create a range slider for createGrid function and finalize on UI! 

@@ -1,3 +1,4 @@
+
 const container = document.getElementById("container");
 let colorPicker = document.getElementById("colorPicker").value;
 document.getElementById("colorPicker").onchange = function () {
@@ -18,52 +19,65 @@ eraserBtn.onclick = () => eraserMode();
 
 let currentRows = 16
 let currentColor = 'black'
-let div;
+let square;
 
 function currentGrid() {
     currentColor = colorPicker;
     let x = currentRows * currentRows
     document.documentElement.style.setProperty("--columns-row", currentRows);
     for (let i = 0; i < x; i++) {
-        div = document.createElement("div");
-        container.appendChild(div);
-        div.addEventListener("mouseenter", function () {
-            this.style.backgroundColor = currentColor;
-        });
+        square = document.createElement("div");
+        square.classList.add('grid-item');
+        container.appendChild(square);
     }
 }
 currentGrid();
+colorMode();
+
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 
 function colorMode() {
-    currentColor = colorPicker
-    div = document.createElement("div");
-    div.addEventListener("mouseenter", function () {
-        this.style.backgroundColor = currentColor;
+    let items = document.querySelectorAll('.grid-item')
+    items.forEach(item => {
+        item.addEventListener("mouseover", function () {
+            item.style.backgroundColor = `${colorPicker}`;
+        });
     });
 }
-// }
+
 function rainbowMode() {
-    currentColor = 'purple'
-    div = document.createElement("div");
-    div.addEventListener("mouseenter", function () {
-        this.style.backgroundColor = currentColor;
+    let items = document.querySelectorAll('.grid-item')
+    items.forEach(item => {
+        item.addEventListener("mouseover", function () {
+            item.style.backgroundColor = `${getRandomColor()}`;
+        });
     });
 }
 
 function eraserMode() {
-    currentColor = 'white'
-    div = document.createElement("div");
-    div.addEventListener("mouseenter", function () {
-        this.style.backgroundColor = currentColor;
-    })
+    let items = document.querySelectorAll('.grid-item')
+    items.forEach(item => {
+        item.addEventListener("mouseover", function () {
+            item.style.backgroundColor = 'white';
+        });
+    });
 }
 
 function createGrid() {
     let container = document.getElementById("container");
     container.innerHTML = '';
-    currentRows = prompt("Select the amount of rows. Maximum is 100 rows. Numbers only!");
+    currentRows = parseInt(prompt("Select the amount of rows. Maximum is 100 rows. Numbers only!"));
     // figure out how to loop until prompt is less than or equal to 100
     // add string conditional in here 
+    //use parseint 
     if (currentRows > 100 || currentRows == 0) {
         alert("Please try again")
         currentRows = 16
@@ -71,9 +85,10 @@ function createGrid() {
     } else {
         currentGrid()
     }
+    colorMode();
 }
 
+
 //***TO DO
-// figure out rainbow color generator function (currently defaults to 'purple')
-// preventing string user input once program is reset
+// slider for createGrid();
 // design UI 

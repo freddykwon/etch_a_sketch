@@ -5,9 +5,12 @@
 h1 {
     text-align: center;
     margin: 2rem;
-    margin-bottom: 5rem;
 }
-
+#mainGame {
+    display: flex;
+    justify-content: center;
+    border: none !important;
+}
 #container {
     display: grid; 
     grid-template-columns: repeat(var(--columns-row), 1fr);
@@ -15,7 +18,6 @@ h1 {
     width: 500px;
     height: 500px; 
 }
-
 div {
-    border: 0.1px solid black;
+    border: 1px solid #e9ecef;
 }
