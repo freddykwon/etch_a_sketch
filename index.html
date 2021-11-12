@@ -8,16 +8,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <title>Etch-a-Sketch</title>
+    <title>Etch-a-Sky</title>
 </head>
-<h1>Etch-a-Sketch</h1>
+<h1>Etch-a-Sky</h1>
 
 <body>
     <div id="mainGame">
-        <input type="color" id="colorPicker" value="#000000" />
-        <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
-            <button type="button" id="colorBtn" class=" btn btn-outline-primary">Color</button>
-            <button type="button" id="rainbowBtn" class=" btn btn-outline-primary">Rainbow</button>
+        <div id="btnGroup" class="btn-group-vertical btn-group-toggle" class="rounded-pill">
+            <button type="button" id="colorBtn" class=" btn btn-outline-primary">Color
+                <span>
+                    <input type="color" id="colorPicker" value="#2389da" />
+                </span>
+            </button>
+            <button type="button" id="skyBtn" class=" btn btn-outline-primary">Blue Sky</button>
             <button type="button" id="eraserBtn" class="btn btn-outline-primary">Eraser</button>
             <button type="button" id="resetBtn" class="btn btn-outline-primary">Reset</button>
         </div>

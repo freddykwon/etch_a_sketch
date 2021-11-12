@@ -1,5 +1,4 @@
 ## Introduction
-An etch-a-sketch project using HTML, CSS and Javascript. 
+Draw something dreamy as you float in the sky! An etch-a-sketch project using HTML, CSS, Bootstrap and Javascript. 
 
-## To Do
-Embed color picker input onto color button, create a range slider for createGrid function and finalize on UI! 
+Live demo: https://freddykwon.github.io/etch_a_sky/

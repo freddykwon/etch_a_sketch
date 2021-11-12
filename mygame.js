@@ -1,19 +1,18 @@
-
 const container = document.getElementById("container");
 let colorPicker = document.getElementById("colorPicker").value;
 document.getElementById("colorPicker").onchange = function () {
     colorPicker = this.value;
     console.log(colorPicker)
 }
+
 const resetBtn = document.getElementById("resetBtn");
 const colorBtn = document.getElementById("colorBtn");
-const rainbowBtn = document.getElementById("rainbowBtn");
+const skyBtn = document.getElementById("skyBtn");
 const eraserBtn = document.getElementById("eraserBtn");
-
 
 resetBtn.onclick = () => createGrid();
 colorBtn.onclick = () => colorMode();
-rainbowBtn.onclick = () => rainbowMode();
+skyBtn.onclick = () => coolMode();
 eraserBtn.onclick = () => eraserMode();
 
 
@@ -34,12 +33,10 @@ function currentGrid() {
 currentGrid();
 colorMode();
 
-function getRandomColor() {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
+function getCoolColor() {
+    const coolColors = ["#2389da", "#1ca3ec", "#5abcd8", "#74ccf4", "#49e8ff"]
+    let randomColor = Math.floor(Math.random() * 5)
+    let color = coolColors[randomColor]
     return color;
 }
 
@@ -53,11 +50,11 @@ function colorMode() {
     });
 }
 
-function rainbowMode() {
+function coolMode() {
     let items = document.querySelectorAll('.grid-item')
     items.forEach(item => {
         item.addEventListener("mouseover", function () {
-            item.style.backgroundColor = `${getRandomColor()}`;
+            item.style.backgroundColor = `${getCoolColor()}`;
         });
     });
 }
@@ -66,7 +63,7 @@ function eraserMode() {
     let items = document.querySelectorAll('.grid-item')
     items.forEach(item => {
         item.addEventListener("mouseover", function () {
-            item.style.backgroundColor = 'white';
+            item.style.backgroundColor = "#edf2fb";
         });
     });
 }
@@ -74,21 +71,15 @@ function eraserMode() {
 function createGrid() {
     let container = document.getElementById("container");
     container.innerHTML = '';
-    currentRows = parseInt(prompt("Select the amount of rows. Maximum is 100 rows. Numbers only!"));
-    // figure out how to loop until prompt is less than or equal to 100
-    // add string conditional in here 
-    //use parseint 
-    if (currentRows > 100 || currentRows == 0) {
+    currentRows = prompt("Select the amount of rows. Maximum is 100 rows. Numbers only!");
+    console.log(currentRows)
+
+    if (currentRows >= 0 && currentRows <= 100) {
+        currentGrid();
+    } else if (typeof currentRows == "string") {
         alert("Please try again")
         currentRows = 16
-        currentGrid()
-    } else {
-        currentGrid()
+        currentGrid();
     }
     colorMode();
 }
-
-
-//***TO DO
-// slider for createGrid();
-// design UI 
